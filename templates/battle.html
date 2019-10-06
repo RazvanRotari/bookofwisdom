@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+
+<head>
+    <style>
+        .center {
+            margin: auto;
+            width: 50%;
+            top: 50%;
+            padding: 10px;
+        }
+
+        .hide_me {
+            display: none;
+        }
+
+        .razvan {
+            float: left;
+            width: 50%;
+        }
+
+        /* Clear floats after the columns */
+
+        .razvan:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .center {
+            text-align: center;
+        }
+    </style>
+    <title> The book of wisdom</title>
+</head>
+
+<body>
+    <h1 class="center">Book of wisdom</h1>
+    <form action="/" method="post">
+        <select name="name">
+        {% for name in scores.keys() %}
+		<option value="{{name}}">{{name}}</option>
+		{% endfor%}
+		</select>
+		<textarea name="quote" cols="40" rows="5"></textarea>
+        <button> Submit</button>
+    </form>
+    <div>
+        {% for name,quotes in scores.items() %}
+        <div class="razvan">
+            <h1>{{name}}</h1>
+            {% for quote in quotes %}
+            <p> {{quote}} </p>
+            {% endfor%}
+        </div>
+
+        {% endfor%}
+    </div>
+</body>
+
+</html>
